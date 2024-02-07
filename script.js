@@ -8,20 +8,18 @@ function imgSearch() {
   let searchWord = document.getElementById("search").value;
   fetch(
     `${baseUrl}?key=${apiKey}&q=${searchWord}&image_type=photo&orientation=horizontal&safesearch=true`
-  ).then((response) => {
-    response
-      .json()
-      .then((data) => {
-        const hitsNumber = Math.round(Math.random() * (20 - 1) + 1);
-        const largeImageURL = data.hits[hitsNumber].largeImageURL;
-        const img = "<img src='" + largeImageURL + "'width=400/>";
-        document.getElementById("result").innerHTML = img;
-      })
-      .finally(() => {
-        form.reset();
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      const images = data.hits.map((hit) => {
+        return `<img src="${hit.largeImageURL}" width="400"/>`;
       });
-    console.log(result);
-  });
+
+      document.getElementById("result").innerHTML = images.join("");
+    })
+    .finally(() => {
+      form.reset();
+    });
 }
 
 form.addEventListener("submit", (e) => {
