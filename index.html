@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inlämning 2</title>
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div>
-      <h2>Pixabay Image Search</h2>
-      <input type="text" id="keyWord" placeholder="Search for photos" />
-      <button onclick="imageSearch()">Search</button>
+    <h1>Pixabay Image Search</h1>
+    <form class="search-form" id="search-form">
+      <input type="text" id="search" placeholder="Search for images" />
+      <button id="button">Search</button>
+    </form>
 
-      <img id="type-picture" alt="Type picture" />
-    </div>
+    <div id="result"></div>
+
+    <script src="script.js"></script>
   </body>
 </html>

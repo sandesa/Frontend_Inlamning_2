@@ -1,32 +1,37 @@
-function imageSearch() {
-  console.log("Hello world");
+const form = document.getElementById("search-form");
+const searcInput = document.getElementById("search");
 
-  var keyWord = document.getElementById("keyWord").value;
-  var apiKey = "42245605-0dbdc35c679b3a5690c43970e";
-  var url =
-    "https://pixabay.com/api/?key=" +
-    apiKey +
-    "&q=" +
-    encodeURIComponent(keyWord);
+const baseUrl = "https://pixabay.com/api/";
+const apiKey = "42245605-0dbdc35c679b3a5690c43970e";
 
-  $.getJSON(url, function (data) {
-    console.log(data.totalHits);
+function imgSearch() {
+  let searchWord = document.getElementById("search").value;
+  fetch(
+    `${baseUrl}?key=${apiKey}&q=${searchWord}&image_type=photo&orientation=horizontal&safesearch=true`
+  ).then((response) => {
+    response
+      .json()
+      .then((data) => {
+        const hitsNumber = Math.round(Math.random() * (20 - 1) + 1);
+        const largeImageURL = data.hits[hitsNumber].largeImageURL;
+        const img = "<img src='" + largeImageURL + "'width=400/>";
+        document.getElementById("result").innerHTML = img;
+      })
+      .finally(() => {
+        form.reset();
+      });
+    console.log(result);
   });
 }
-console.log(url);
 
-var get_url = "https://pixabay.com/api/";
-var api_key = "42245605-0dbdc35c679b3a5690c43970e";
-var q = keyWord;
-var per_page = 10;
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-var url = get_url + "?key=" + api_key + q + per_page;
+  const searchTerm = searcInput.value;
 
-$.get(secondUrl, function (data, status) {
-  console.log(data);
-
-  for (var i = 0; i < data.hits.length; i++) {
-    let pic = data.hits[i].webformatURL;
-    $("#results").append("<img class='img' src='" + pic + "'>");
+  if (searchTerm && searchTerm !== "") {
+    imgSearch();
+  } else {
+    window.location.reload();
   }
 });
