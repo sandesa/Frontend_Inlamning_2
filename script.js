@@ -12,7 +12,7 @@ function imgSearch() {
     .then((response) => response.json())
     .then((data) => {
       const resultContainer = document.getElementById("result");
-      resultContainer.innerHTML = ""; // Clear existing content
+      resultContainer.innerHTML = "";
 
       data.hits.forEach((hit) => {
         const imageContainer = document.createElement("div");

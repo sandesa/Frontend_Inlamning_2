@@ -9,8 +9,15 @@
   <body>
     <h1>Pixabay Image Search</h1>
     <form class="search-form" id="search-form">
-      <input type="text" id="search" placeholder="Search for images" />
-      <button id="button">Search</button>
+      <input type="text" id="search" placeholder="Enter keywords" />
+
+      <select id="colorSlider">
+        <option value="" selected>Any color</option>
+        <option value="#ff0000">Red</option>
+        <option value="#00ff00">Green</option>
+        <option value="#0000ff">Blue</option>
+      </select>
+      <button type="submit">Search</button>
     </form>
 
     <div id="result" class="result-container"></div>

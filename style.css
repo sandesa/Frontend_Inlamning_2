@@ -35,6 +35,17 @@ form {
   color: #333;
 }
 
+#colorSlider {
+  width: 20%;
+  max-width: 150px;
+  padding: 10px 20px;
+  margin: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
 button {
   padding: 10px 20px;
   background-color: green;
@@ -44,7 +55,7 @@ button {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   border-radius: 5px;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 button:hover {
@@ -68,9 +79,6 @@ img {
 
 .image-container {
   text-align: center;
-}
-
-.image-wrapper {
 }
 
 .result-container img:nth-last-child(-n + 2) {
