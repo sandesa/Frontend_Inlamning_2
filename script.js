@@ -7,7 +7,7 @@ const apiKey = "42245605-0dbdc35c679b3a5690c43970e";
 function imgSearch() {
   let searchWord = document.getElementById("search").value;
   fetch(
-    `${baseUrl}?key=${apiKey}&q=${searchWord}&image_type=photo&orientation=horizontal&safesearch=true`
+    `${baseUrl}?key=${apiKey}&q=${searchWord}&image_type=photo&orientation=horizontal&safesearch=true&per_page=10`
   )
     .then((response) => response.json())
     .then((data) => {
