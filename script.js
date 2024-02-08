@@ -6,8 +6,10 @@ const apiKey = "42245605-0dbdc35c679b3a5690c43970e";
 
 function imgSearch() {
   let searchWord = document.getElementById("search").value;
+  let colors = document.getElementById("colorSlider").value;
+
   fetch(
-    `${baseUrl}?key=${apiKey}&q=${searchWord}&image_type=photo&orientation=horizontal&safesearch=true&per_page=10`
+    `${baseUrl}?key=${apiKey}&q=${searchWord}&image_type=photo&orientation=horizontal&safesearch=true&per_page=10&colors=${colors}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -40,6 +42,7 @@ function imgSearch() {
         imageContainer.appendChild(photographer);
 
         resultContainer.appendChild(imageContainer);
+        console.log(baseUrl);
       });
     })
     .finally(() => {
