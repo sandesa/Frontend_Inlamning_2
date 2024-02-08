@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: gray;
+  background-color: lightgreen;
 }
 
 body {
@@ -59,14 +59,28 @@ button:hover {
   grid-gap: 40px;
 }
 
-.result-container img {
+img {
   width: 100%;
   height: 230px;
   object-fit: cover;
   border-radius: 5px;
 }
 
+.image-container {
+  text-align: center;
+}
+
+.image-wrapper {
+}
+
 .result-container img:nth-last-child(-n + 2) {
   grid-column: span 2;
   margin: 0 auto;
+}
+
+p {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-size: 14px;
+  color: #424242;
 }

@@ -11,11 +11,36 @@ function imgSearch() {
   )
     .then((response) => response.json())
     .then((data) => {
-      const images = data.hits.map((hit) => {
-        return `<img src="${hit.largeImageURL}" width="400"/>`;
-      });
+      const resultContainer = document.getElementById("result");
+      resultContainer.innerHTML = ""; // Clear existing content
 
-      document.getElementById("result").innerHTML = images.join("");
+      data.hits.forEach((hit) => {
+        const imageContainer = document.createElement("div");
+        imageContainer.classList.add("image-container");
+
+        const imageWrapper = document.createElement("div");
+        imageWrapper.classList.add("image-wrapper");
+
+        const image = document.createElement("img");
+        image.src = hit.largeImageURL;
+        image.width = 400;
+        image.alt = hit.tags;
+
+        const tags = document.createElement("p");
+        tags.classList.add("tags");
+        tags.textContent = hit.tags;
+
+        const photographer = document.createElement("p");
+        photographer.classList.add("photographer");
+        photographer.textContent = `Photographer: ${hit.user}`;
+
+        imageWrapper.appendChild(image);
+        imageContainer.appendChild(imageWrapper);
+        imageContainer.appendChild(tags);
+        imageContainer.appendChild(photographer);
+
+        resultContainer.appendChild(imageContainer);
+      });
     })
     .finally(() => {
       form.reset();
