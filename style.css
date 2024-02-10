@@ -83,11 +83,6 @@ img {
   text-align: center;
 }
 
-.result-container img:nth-last-child(-n + 2) {
-  grid-column: span 2;
-  margin: 0 auto;
-}
-
 p {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
@@ -114,4 +109,16 @@ p {
 .button-container button:disabled {
   background-color: #bdc3c7;
   cursor: not-allowed;
+}
+
+@media screen and (max-width: 900px) {
+  .result-container {
+    grid-template-columns: 1fr 1fr; /* Two columns on screens with a maximum width of 600px */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .result-container {
+    grid-template-columns: 1fr; /* Two columns on screens with a maximum width of 600px */
+  }
 }
