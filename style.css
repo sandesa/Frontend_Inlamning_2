@@ -61,7 +61,7 @@ button {
 }
 
 button:hover {
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 .result-container {
@@ -77,10 +77,6 @@ img {
   height: 230px;
   object-fit: cover;
   border-radius: 5px;
-}
-
-.image-container {
-  text-align: center;
 }
 
 p {
@@ -113,12 +109,12 @@ p {
 
 @media screen and (max-width: 900px) {
   .result-container {
-    grid-template-columns: 1fr 1fr; /* Two columns on screens with a maximum width of 600px */
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media screen and (max-width: 600px) {
   .result-container {
-    grid-template-columns: 1fr; /* Two columns on screens with a maximum width of 600px */
+    grid-template-columns: 1fr;
   }
 }

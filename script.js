@@ -14,6 +14,7 @@ const resultContainer = document.getElementById("result");
 let currentPage = 1;
 let currentSearchTerm = "";
 let currentColors = "";
+let perPage = 10;
 
 function imgSearch() {
   let searchWord = searchInput.value;
@@ -21,7 +22,7 @@ function imgSearch() {
   updateButtonContainerVisibility(true);
 
   fetch(
-    `${baseUrl}?key=${apiKey}&q=${searchWord}&image_type=photo&orientation=horizontal&safesearch=true&per_page=10&page=${currentPage}&colors=${colors}`
+    `${baseUrl}?key=${apiKey}&q=${searchWord}&image_type=photo&orientation=horizontal&safesearch=true&per_page=${perPage}&page=${currentPage}&colors=${colors}`
   )
     .then((response) => response.json())
     .then((data) => {
