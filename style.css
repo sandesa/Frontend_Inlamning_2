@@ -111,7 +111,13 @@ p {
   cursor: not-allowed;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1550px) {
+  .result-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 1150px) {
   .result-container {
     grid-template-columns: 1fr 1fr;
   }
