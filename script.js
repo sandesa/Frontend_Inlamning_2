@@ -12,13 +12,12 @@ const apiKey = "42245605-0dbdc35c679b3a5690c43970e";
 const resultContainer = document.getElementById("result");
 
 let currentPage = 1;
-let currentSearchTerm = "";
-let currentColors = "";
 let perPage = 10;
+let searchWord = "";
+let colors = "";
+let pictureCount = 0;
 
 function imgSearch() {
-  let searchWord = searchInput.value;
-  let colors = colorSlider.value;
   updateButtonContainerVisibility(true);
 
   fetch(
@@ -55,39 +54,30 @@ function imgSearch() {
 
         resultContainer.appendChild(imageContainer);
       });
-
-      // form.reset();
     })
     .finally(() => {
-      currentSearchTerm = searchWord;
-      currentColors = colors;
+      pictureCount = resultContainer.children.length;
       updatePageButtonsState();
     });
 }
 
 function loadNextPage() {
   currentPage++;
-  imgSearchWithCurrentTermAndColors();
+  imgSearch();
 }
 
 function loadPrevPage() {
   if (currentPage > 1) {
     currentPage--;
-    imgSearchWithCurrentTermAndColors();
-  }
-}
-
-function imgSearchWithCurrentTermAndColors() {
-  if (currentSearchTerm && currentSearchTerm !== "") {
     imgSearch();
-  } else {
-    window.location.reload();
   }
 }
 
 function updatePageButtonsState() {
   prevPageButton.disabled = currentPage === 1;
+  nextPageButton.disabled = pictureCount < 10;
 }
+
 function updateButtonContainerVisibility(show) {
   buttonContainer.style.display = show ? "block" : "none";
 }
@@ -95,6 +85,8 @@ function updateButtonContainerVisibility(show) {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   currentPage = 1;
+  searchWord = searchInput.value;
+  colors = colorSlider.value;
   imgSearch();
 });
 
